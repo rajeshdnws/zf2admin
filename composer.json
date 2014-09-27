@@ -1,0 +1,15 @@
+{
+    "name": "rajeshdnw/zf2admin",
+    "description": "Zend Framework 2  based admin section",
+    "require": {
+        "arvind2110/zf2-auth-acl": "php 5.4",
+        "zend/gdata": "2.3"
+    },
+    "license": "free",
+    "authors": [
+        {
+            "name": "Rajesh Chaudhary",
+            "email": "rajeshdnw@gmail.com"
+        }
+    ]
+}
