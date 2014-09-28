@@ -212,7 +212,7 @@ p {margin: 0;  padding: 0; margin-bottom: 10px;}
 /** start menu Style **/
 .chromestyle{width: 100%;font-weight: bold;}
 .chromestyle:after{  display: block; height: 0; clear: both; visibility: hidden;}
-.chromestyle ul{width: 100%;background: url(../images/menu.png) repeat-x top;padding: 2px 0;margin: 0; height:29px;text-align:left; }
+.chromestyle ul{width: 100%;background: url(../images/menu.png) repeat-x top;padding: 2px 0;margin: 0; height:29px;text-align:center; }
 .chromestyle ul li{display: inline;}
 .chromestyle ul li a{ font:bold 12px Tahoma, Arial, Helvetica, sans-serif; letter-spacing:0.5px; background:url(../images/split.png) no-repeat right; color:#fff;padding:9px 10px;margin: 0;line-height:27px;text-decoration: none;}
 

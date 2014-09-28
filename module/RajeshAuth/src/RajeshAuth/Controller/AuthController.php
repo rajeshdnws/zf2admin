@@ -5,8 +5,10 @@ namespace RajeshAuth\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use RajeshAuth\Storage\IdentityManagerInterface;
+use RajeshAuth\Controller\SuccessController;
+use RajeshAuth\Model\Collection;
 
-class AuthController extends AbstractActionController
+class AuthController extends SuccessController
 {
     protected $identityManager;
 
@@ -47,10 +49,13 @@ class AuthController extends AbstractActionController
             if ($form->isValid()) {
                 $dataform = $form->getData();
                 $result = $this->identityManager->login($dataform['username'], $dataform['password']);
-
+                  
                 if ($result->isValid()) {
                     //authentication success
                     $identityRow = $this->identityManager->getAuthService()->getAdapter()->getResultRowObject();
+                        $this->setProfile($identityRow->id);
+                                      //  echo '<pre>'; var_dump($identityRow);die;
+                              
                     $this->identityManager->storeIdentity(
                          array('id'          => $identityRow->id,
                                 'username'   => $dataform['username'],

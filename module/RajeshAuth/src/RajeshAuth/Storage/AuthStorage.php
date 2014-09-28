@@ -9,7 +9,7 @@ use Zend\Session\Config\SessionConfig;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Session\SaveHandler\DbTableGateway;
 use Zend\Session\SaveHandler\DbTableGatewayOptions;
-
+use Zend\Session\Container;
 class AuthStorage extends Storage\Session
     implements ServiceLocatorAwareInterface
 {
@@ -31,7 +31,8 @@ class AuthStorage extends Storage\Session
         //open session
         $sessionConfig = new SessionConfig();
         $saveHandler->open($sessionConfig->getOption('save_path'), $this->namespace);
-        $this->session->getManager()->setSaveHandler($saveHandler);
+       $this->session->getManager()->setSaveHandler($saveHandler);
+        
     }
 
     public function write($contents)
@@ -47,6 +48,7 @@ class AuthStorage extends Storage\Session
     public function clear()
     {
         $this->getSessionManager()->getSaveHandler()->destroy($this->getSessionId());
+         $this-> getSessionName('');
         parent::clear();
     }
 
@@ -59,7 +61,11 @@ class AuthStorage extends Storage\Session
     {
         return $this->session->getManager()->getId();
     }
-
+     public function getSessionName($ses)
+    {
+      $user_session = new Container('admin');
+      $user_session->admin = $ses;
+    }
     public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
     {
         $this->serviceLocator = $serviceLocator;

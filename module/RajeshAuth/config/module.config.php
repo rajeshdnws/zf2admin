@@ -31,7 +31,7 @@ return array(
             'auth' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/admin[/:action]',
+                    'route'    => '/admin/login[/:action]',
                     'defaults' => array(
                         'controller' => 'RajeshAuth\Controller\Auth',
                         'action'     => 'index',
@@ -42,7 +42,7 @@ return array(
             'success' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/success[/:action]',
+                    'route'    => '/admin/success[/:action]',
                     'defaults' => array(
                         'controller' => 'RajeshAuth\Controller\Success',
                         'action'     => 'index',
@@ -54,7 +54,7 @@ return array(
 
     //setting up view_manager
     'view_manager' => array(
-        'template_path_stack' => array(
+             'template_path_stack' => array(
             'RajeshAuth' => __DIR__ . '/../view',
         ),
     ),

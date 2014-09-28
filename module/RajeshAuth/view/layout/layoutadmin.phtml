@@ -1,0 +1,83 @@
+<?php echo $this->doctype(); ?>
+    
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <head>
+    <meta charset="utf-8">
+    <?php echo $this->headTitle('Chaudharyweb.com '. $this->translate('ZF2 Login'))->setSeparator(' - ')->setAutoEscape(false) ?>
+    
+  <?php echo $this->headMeta()
+    ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+    ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
+    
+    <!-- Le styles -->
+    <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+    ->prependStylesheet($this->basePath() . '/css/stylelogin.css');?>
+    
+    
+    <!-- Scripts -->
+    <?php echo $this->headScript()
+    ->prependFile($this->basePath() . '/js/jquery.min.js')
+    ->prependFile($this->basePath() . '/js/dropdown_menu.js');
+    ; ?>
+    </head>
+    <body>
+    
+    
+    <div class="header_top">
+    <a href="<?php echo $this->url('success') ?>"><span class="title">Welcome To Chaudharyweb.com</span> </a>
+    
+    
+    <div  class="top_right"><a href="<?php echo $this->url('auth', array('action' => 'logout')); ?>">Logout</a></div>
+    
+    </div>
+    <div class="chromestyle" id="chromemenu">
+    
+    <ul>
+    
+    
+    <li><a href="#" rel="dropmenu1">Admin </a></li>
+    <li><a href="#"  rel="dropmenu5"> Manage User</a></li>
+    
+    
+    
+    </ul>
+    </div>
+    <div id="dropmenu1" class="dropmenudiv" style="width:150px;">
+    <a href="<?php echo $this->url('success') ?>">Home</a>
+    <a href="#">Change Password</a>
+    <a href="<?php echo $this->url('auth', array('action' => 'logout')); ?>" id="link" onclick="return doConfirm(this.id);">Log Out</a>                                 
+    </div>
+    
+    <div id="dropmenu2" class="dropmenudiv">		
+    <a href="#">View/Edit Site Pages</a>
+    <a href="#">Add Site Pages</a>								                
+    </div>		
+       
+    <div id="dropmenu5" class="dropmenudiv" style="width:220px;">		
+    <a href="#">Register user</a>
+    <a href="#">Add User</a>
+    </div>
+    
+    
+    
+    
+    
+    
+    <script type="text/javascript">
+    
+    cssdropdown.startchrome("chromemenu")
+    
+    </script>
+    <div id="content-box">
+     <?php echo $this->content; ?>
+    </div> 
+    <div id="border-bottom"><div><div></div></div></div> 
+    </div>
+    
+    <div class="foot">Copyright &copy; chaudharyweb.com</div>
+    
+    </body>
+    </html>

@@ -23,7 +23,7 @@ class IdentityManager implements IdentityManagerInterface
              ->setCredential($credential);
 
         $result = $this->getAuthService()->authenticate();
-
+          //  echo 'dasfsdg'; die;
         return $result;
     }
 
@@ -34,7 +34,7 @@ class IdentityManager implements IdentityManagerInterface
 
     public function hasIdentity()
     {
-        $sessionId = $this->getAuthService()->getStorage()->getSessionId();
+        $sessionId = $this->getAuthService()->getStorage()->getSessionId(); //die;
 
         return $this->getAuthService()->getStorage()
                     ->getSessionManager()
