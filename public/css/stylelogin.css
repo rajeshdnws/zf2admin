@@ -200,7 +200,7 @@ p {margin: 0;  padding: 0; margin-bottom: 10px;}
 .header_top{ background:url(../images/header_bg.png) repeat-x; width:100%; height:56px;}
 .header_top span{ font: bold 24px  Calibri,Tahoma,Verdana,Arial; letter-spacing:0.1px;  line-height:50px; padding-left:20px; color:#fff; background:none; border:none;}
 .left{float:left; width:225px; height:200px; padding:0 0 40px 10px;}
-.top_right{ background:url(../images/logout.png) no-repeat; padding-left:27px; float:right; margin-right:30px; margin-top:15px; height:25px;}
+.top_right{ background:url(../images/logout.png) no-repeat; padding-left:27px; float:right; margin-right:30px; height:25px;}
 .top_right a{ font:13px Tahoma, Arial, Helvetica, sans-serif; color:#fff; line-height:20px;}
 .top_right a:hover{ text-decoration:underline; color:#ccc;}
 .detail tr td{ padding:2px; font:12px Arial, Helvetica, sans-serif; color:#333; letter-spacing:0.5px;}

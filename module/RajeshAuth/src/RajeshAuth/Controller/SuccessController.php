@@ -14,11 +14,7 @@ protected $_profileTable;
     public function indexAction()
     {
          $viewModel = new ViewModel();
-     // $user_session = new Container('rajeshauth');
-    // $user =$this->getProfileTable()->fetchAll();
-      //$this->hasIdentity();
-     // $this->identityManager->hasIdentity();
-       // echo '<pre>'; var_dump($user);//die;
+          
         return $viewModel;
     }
     public function getProfileTable() {
@@ -32,8 +28,10 @@ protected $_profileTable;
     {
     $profil=$this->getProfileTable()->fetchAll($id);
     $user_session = new Container('admin');
-      $user_session->admin = $profil;
-      //   echo '<pre>'; var_dump($profil);die;
+    //echo $profil[0]->name;
+  $user_session->name = $profil[0]->name;
+     $user_session->email = $profil[0]->email;
+     $user_session->id = $profil[0]->id;
 
     }
 }

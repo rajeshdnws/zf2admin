@@ -1,6 +1,8 @@
-<?php echo $this->doctype(); ?>
-    
-    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php echo $this->doctype();
+$user=$_SESSION['admin'];
+
+?>
+        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
     <head>
@@ -30,7 +32,7 @@
     <a href="<?php echo $this->url('success') ?>"><span class="title">Welcome To Chaudharyweb.com</span> </a>
     
     
-    <div  class="top_right"><a href="<?php echo $this->url('auth', array('action' => 'logout')); ?>">Logout</a></div>
+    <div  class="top_right"><span style="margin-right: 66px;"><?php  echo $user->name; ?></span><a href="<?php echo $this->url('auth', array('action' => 'logout')); ?>">Logout</a></div>
     
     </div>
     <div class="chromestyle" id="chromemenu">
