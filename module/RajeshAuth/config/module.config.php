@@ -37,8 +37,24 @@ return array(
                         'action'     => 'index',
                     ),
                 ),
-            ),
-
+                ),
+                        'auth' => array(
+                             'type'    => 'segment', 
+                        'options' => array(
+                       'route'    => '/admin/user[/:action][/:id]',
+                         'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'RajeshAuth\Controller\Auth',
+                        'action'     => 'user',
+                    ),
+                ),            
+                      
+                 ),
+             
+                  
             'success' => array(
                 'type'    => 'segment',
                 'options' => array(
@@ -47,11 +63,31 @@ return array(
                         'controller' => 'RajeshAuth\Controller\Success',
                         'action'     => 'index',
                     ),
-                ),
+                ),         
+                        'may_terminate' => true,
+                        'child_routes'  => array(
+                        'cmpage' => array(
+                             'type'    => 'Literal', 
+                        'options' => array(
+                       'route'    => '/admin/cmpage[/:action][/:id]',
+                         'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'RajeshAuth\Controller\Success',
+                        'action'     => 'cmspage',
+                    ),
+                    ),
+                        ),
+              
+                     
+                      
+               ),
             ),
         ),
     ),
-
+   
     //setting up view_manager
     'view_manager' => array(
              'template_path_stack' => array(

@@ -9,9 +9,28 @@ $form->setAttribute('action', $this->url(
     'auth'
 ));
 $form->prepare();
+?>
 
-echo $this->form()->openTag($form);
-echo $this->formCollection($form);
-echo $this->form()->closeTag();
+            <?php  echo $this->form()->openTag($form); ?>
+                <fieldset class="has-warning">
+                    <span class="block input-glyphicon input-glyphicon-right">
+                        <input name="username" type="text" class="form-control" placeholder="<?php echo $this->escapeHtml('Login'); ?>" autofocus required />
+                        <i class="glyphicon glyphicon-user"></i>
+                    </span>
 
-echo $this->error;
+                    <span class="block input-glyphicon input-glyphicon-right">
+                        <input name="password" type="password" class="form-control" placeholder="<?php echo $this->escapeHtml('Password'); ?>" required />
+                        <i class="glyphicon glyphicon-lock"></i>
+                    </span>
+
+                    <div class="clearfix buttons">
+                        <input name="redirect" id="redirect" type="hidden" value="<?php echo $this->escapeHtml($this->form->get('redirect')->getValue()); ?>">
+
+                        <button class="pull-right btn btn-small btn-warning">
+                            <i class="glyphicon glyphicon-log-in"></i>
+                            <?php echo $this->escapeHtml($this->translate('Log In')); ?>
+                        </button>
+                    </div>
+                </fieldset>
+            <?php echo $this->form()->closeTag();
+            echo $this->error;?>

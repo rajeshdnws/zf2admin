@@ -5,12 +5,29 @@ namespace RajeshAuth;
 use Zend\Mvc\MvcEvent;
 use Zend\ModuleManager\ModuleManager;
 use RajeshAuth\Model\Collection;
+use Zend\Db\Adapter\Adapter as DbAdapter;
+use Zend\Db\TableGateway\Feature\GlobalAdapterFeature;
+
 class Module
 {
+    
+     protected $directory = __DIR__;
+
+    /**
+     * Module namespace
+     */
+    protected $namespace = __NAMESPACE__;
     public function onBootstrap(MvcEvent $e)
     {
         $em = $e->getApplication()->getEventManager();
+     $application    = $e->getApplication();
+
         $em->attach('route', array($this, 'checkAuthenticated'));
+        $config         = $application->getConfig();
+        if (isset($config['db'])) {
+            $dbAdapter = $this->initDatabase($config);
+            //$this->initSession($serviceManager, $dbAdapter);
+        }
         
     }
 
@@ -83,6 +100,13 @@ class Module
                 },
             ),
         );
+    }
+     public function initDatabase(array $config)
+    {
+        $dbAdapter = new DbAdapter($config['db']);
+        GlobalAdapterFeature::setStaticAdapter($dbAdapter);
+
+        return $dbAdapter;
     }
 }
 

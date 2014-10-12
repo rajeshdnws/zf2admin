@@ -1,0 +1,22 @@
+<?php
+/**
+ * This source file is part of GotCms.
+ *
+ * GotCms is free software: you can redistribute it and/or modify
+*/
+?>
+<?php if (!empty($this->messages)):?>
+    <?php foreach ($this->messages as $type => $messages):?>
+        <?php foreach ($messages as $message): ?>
+            <div class="notification <?php echo $type; ?>">
+                <a class="close" href="#">
+                    <img alt="<?php echo $this->escapeHtml('Close'); ?>" title="<?php echo $this->escapeHtml('Close this notification'); ?>"
+                                                                                                        src="/backend/images/close-small.png">
+                </a>
+                <div>
+                    <?php echo $this->escapeHtml($message); ?>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    <?php endforeach; ?>
+<?php endif; ?>

@@ -23,7 +23,7 @@
     
     
     <a href="<?php echo $this->url('success') ?>">Home</a>
-    <a href="#">Change Password</a>
+    <a href="<?php echo $this->url('auth', array('action' => 'change-password')); ?>">Change Password</a>
     <a href="<?php echo $this->url('auth', array('action' => 'logout')); ?>" id="link" onclick="return doConfirm(this.id);">Log Out</a>   
     
     </div>
@@ -93,8 +93,8 @@
     <img src="/images/header/icon-48-frontpage.png" alt="Home Owner" />					<span> Manage Agent</span></a> 
     </div> 
     <div class="home_in">
-    <a href="#">Add Usert</a>
-    <a href="#">View User</a>
+    <a href="<?php echo $this->url('auth', array('action' => 'add')); ?>">Add User</a>
+    <a href="<?php echo $this->url('auth', array('action' => 'user')); ?>">View User</a>
   
     </div>
     <div class="cl"></div>

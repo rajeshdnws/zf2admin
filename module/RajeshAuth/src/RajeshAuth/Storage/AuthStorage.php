@@ -41,7 +41,7 @@ class AuthStorage extends Storage\Session
         //check if $contents is array
         if (is_array($contents) && !empty($contents)) {
             $this->getSessionManager()
-                          ->getSaveHandler()->write($this->getSessionId(), \Zend\Json\Json::encode($contents));
+             ->getSaveHandler()->write($this->getSessionId(), \Zend\Json\Json::encode($contents));
         }
     }
 

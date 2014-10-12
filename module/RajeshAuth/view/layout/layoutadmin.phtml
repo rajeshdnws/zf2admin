@@ -2,10 +2,9 @@
 $user=$_SESSION['admin'];
 
 ?>
-        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-    <head>
+    
     <meta charset="utf-8">
     <?php echo $this->headTitle('Chaudharyweb.com '. $this->translate('ZF2 Login'))->setSeparator(' - ')->setAutoEscape(false) ?>
     
@@ -16,7 +15,8 @@ $user=$_SESSION['admin'];
     
     <!-- Le styles -->
     <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-    ->prependStylesheet($this->basePath() . '/css/stylelogin.css');?>
+    ->prependStylesheet($this->basePath() . '/css/stylelogin.css')
+     ->prependStylesheet($this->basePath() . '/css/bootstrap.css');?>
     
     
     <!-- Scripts -->
@@ -41,7 +41,8 @@ $user=$_SESSION['admin'];
     
     
     <li><a href="#" rel="dropmenu1">Admin </a></li>
-    <li><a href="#"  rel="dropmenu5"> Manage User</a></li>
+    <li><a href="#"  rel="dropmenu2"> Manage User</a></li>
+     <li><a href="#"  rel="dropmenu3">Cms page</a></li>
     
     
     
@@ -49,18 +50,18 @@ $user=$_SESSION['admin'];
     </div>
     <div id="dropmenu1" class="dropmenudiv" style="width:150px;">
     <a href="<?php echo $this->url('success') ?>">Home</a>
-    <a href="#">Change Password</a>
+    <a href="<?php echo $this->url('auth', array('action' => 'change-password')); ?>">Change Password</a>
     <a href="<?php echo $this->url('auth', array('action' => 'logout')); ?>" id="link" onclick="return doConfirm(this.id);">Log Out</a>                                 
     </div>
     
-    <div id="dropmenu2" class="dropmenudiv">		
-    <a href="#">View/Edit Site Pages</a>
-    <a href="#">Add Site Pages</a>								                
+    <div id="dropmenu3" class="dropmenudiv">		
+    <a href="<?php echo $this->url('success', array('action' => 'cmspage')); ?>">View  Pages</a>
+    <a href="<?php echo $this->url('success', array('action' => 'add')); ?>">Add  Pages</a>								                
     </div>		
        
-    <div id="dropmenu5" class="dropmenudiv" style="width:220px;">		
-    <a href="#">Register user</a>
-    <a href="#">Add User</a>
+    <div id="dropmenu2" class="dropmenudiv" style="width:220px;">		
+    <a href="<?php echo $this->url('auth', array('action' => 'user')); ?>">Register user</a>
+    <a href="<?php echo $this->url('auth', array('action' => 'add')); ?>">Add User</a>
     </div>
     
     
@@ -74,9 +75,10 @@ $user=$_SESSION['admin'];
     
     </script>
     <div id="content-box">
+       <?php echo $this->partial('messages.phtml', array('messages' => $this->flashMessages)); ?>
      <?php echo $this->content; ?>
     </div> 
-    <div id="border-bottom"><div><div></div></div></div> 
+    <div id="border-bottom"><div>
     </div>
     
     <div class="foot">Copyright &copy; chaudharyweb.com</div>

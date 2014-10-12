@@ -41,7 +41,6 @@ position:relative;}
 .right{margin:0 0 0 245px; padding:0 10px 0 0;}
 .right2{margin:auto; width:300px; height:240px; position:absolute; margin-left:-150px; margin-top:-120px; left:50%; top:50%;}
 .error{color:#FF0000; text-align:center; padding-bottom:5px;}
-.btn{background:url(../images/bg.png) repeat-x; height:24px; width:80px; border:1px solid #999; padding:0; color:#3b3b3b; font:12px Verdana, Arial, Helvetica, sans-serif;}
 .start{padding:0 0 20px; text-align:center; font:bold 30px Arial, Helvetica, sans-serif; color:#3b3b3b;}
 
 .log-top{background:#464646; padding:10px; color:#fff;}

@@ -2,59 +2,41 @@
 //filename : module/RajeshAuth/src/RajeshAuth/Form/LoginForm.php
 namespace RajeshAuth\Form;
 
-use Zend\Form\Form;
-use Zend\InputFilter;
+use Admin\Form\AbstractForm;
+use Zend\Form\Element;
+use Zend\InputFilter\Factory as InputFilterFactory;
 
-class LoginForm extends Form
+class LoginForm extends AbstractForm
 {
-    public function __construct()
+    /**
+     * Initialize UserLogin form
+     *
+     * @return void
+     */
+    public function init()
     {
-        parent::__construct();
+        $inputFilterFactory = new InputFilterFactory();
+        $inputFilter        = $inputFilterFactory->createInputFilter(
+            array(
+                'username' => array(
+                    'required' => true,
+                    'validators' => array(
+                        array('name' => 'not_empty'),
+                    )
+                ),
+                'password' => array(
+                    'required' => true,
+                    'validators' => array(
+                        array('name' => 'not_empty'),
+                    ),
+                ),
+            )
+        );
 
-        $this->setAttribute('method', 'post');
+        $this->setInputFilter($inputFilter);
 
-        $this->add(array(
-            'name' => 'username',
-            'type' => 'Text',
-            'options' => array(
-                'label' => 'Username : '
-            ),
-        ));
-
-        $this->add(array(
-            'name' => 'password',
-            'type' => 'Password',
-            'options' => array(
-                'label' => 'Password : '
-            ),
-        ));
-
-         $this->add(array(
-            'name' => 'Loginsubmit',
-            'type' => 'Submit',
-            'attributes' => array(
-                'value' => 'Login',
-                'id' => 'Loginsubmit',
-            ),
-        ));
-
-        $this->setInputFilter($this->createInputFilter());
-    }
-
-    public function createInputFilter()
-    {
-        $inputFilter = new InputFilter\InputFilter();
-
-        //username
-        $username = new InputFilter\Input('username');
-        $username->setRequired(true);
-        $inputFilter->add($username);
-
-        //password
-        $password = new InputFilter\Input('password');
-        $password->setRequired(true);
-        $inputFilter->add($password);
-
-        return $inputFilter;
+        $this->add(new Element('username'));
+        $this->add(new Element('password'));
+        $this->add(new Element('redirect'));
     }
 }

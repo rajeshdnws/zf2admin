@@ -1,0 +1,49 @@
+<?php 
+$title = 'Show list of Page';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<table class="table clickable table-striped table-hover">
+    <colgroup>
+        <col width="20%">
+        <col width="20%">
+        <col width="30%">
+         <col width="10%">
+        <col width="10%">
+        <col width="10%">
+    </colgroup>
+    <thead>
+        <tr>
+            <th><?php echo $this->escapeHtml('Title'); ?></th>
+            <th><?php echo $this->escapeHtml('URL'); ?></th>
+            <th><?php echo $this->escapeHtml('Content'); ?></th>
+            <th><?php echo $this->escapeHtml('Is active'); ?></th>
+            <th class="text-center"><?php echo $this->escapeHtml('Edit'); ?></th>
+            <th class="text-center"><?php echo $this->escapeHtml('Delete'); ?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($this->rows as $user):
+     
+      // echo '<pre>'; var_dump($user); die;?>
+            <tr>
+                <td><?php echo $this->escapeHtml($user['title']); ?></td>
+                <td><?php echo $this->escapeHtml($user['aliase']); ?></td>
+                <td><?php echo $this->escapeHtml(substr($user['content'],0,50)); ?></td>
+                <td><?php echo $this->escapeHtml($user['status']? 'Yes' : 'No'); ?></td>
+                <td class="text-center">
+                    <a href="<?php echo $this->url('success',  array('action' => 'edit','id' => $user['id'])); ?>" class="edit-line">
+                        <img src="/backend/images/icones/edit.png" alt="<?php echo $this->escapeHtml('Edit'); ?>" />
+                    </a>
+                </td>
+                <td class="text-center">
+                    <a href="<?php echo $this->url('auth',  array('action' => 'delete','id' =>$user['id'])); ?>" class="delete-line">
+                        <img src="<?php echo '/backend/images/icones/delete.png'; ?>" alt="<?php echo $this->escapeHtml('Delete'); ?>">
+                    </a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+

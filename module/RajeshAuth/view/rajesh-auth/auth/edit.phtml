@@ -1,0 +1,96 @@
+<?php
+    $title = 'Edit user details' ;
+    $this->headTitle($title);
+     
+    $form = $this->form;
+    $form->setAttribute('id','adduserform');
+    $form->setAttribute('name','adduserform');
+    $form->setAttribute('enctype','application/x-www-form-urlencoded');
+    $form->prepare();  
+    
+   
+  
+    
+    ?>
+    <style type="text/css">
+
+form select{
+	padding:5px;
+	border:1px solid #aaa;
+	border-radius:4px;
+	width:120px;
+}
+
+form label{
+	font-size:12px;
+	font-weight:bold;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	load_options('','country');
+});
+
+function load_options(id,index){
+	$("#loading").show();
+	if(index=="state"){
+		$("#city").html('<option value="">Select city</option>');
+	}
+	$.ajax({
+		url: "/admin/success/ajaxrequest?index="+index+"&id="+id,
+		complete: function(){$("#loading").hide();},
+		success: function(data) {
+			$("#"+index).html(data);
+		}
+	})
+}
+</script>
+    <div class="border"> 
+    <div class="padding"> 
+    <div id="toolbar-box"> 
+    <div class="t"> 
+    <div class="t"> 
+    <div class="t"></div> 
+    </div> 
+    </div> 
+    <div class="m"> 
+    <div class="toolbar" id="toolbar"> 
+    
+    <div class="clr"></div>
+    </div> 
+    <div class="header icon-48-article"> <h1><?php echo $this->escapeHtml($title); ?></h1>
+    <?php echo $this->error ?></div> 
+    <div class="clr"></div> 
+    </div> 
+    <div class="b"> 
+    <div class="b"> 
+    <div class="b"></div> 
+    </div> 
+    </div> 
+    </div> 
+    <div class="clr"></div>
+    <div id="element-box">
+    <div class="t"> 
+    <div class="t"> 
+    <div class="t"></div> 
+    </div> 
+    </div> 
+    <div class="m">
+<?php   echo $this->form()->openTag($form); ?>
+
+    <?php  echo $this->formCollection($form); ?>
+    <input id="input-save" type="submit" class="btn btn-warning" value="<?php echo $this->escapeHtml('Save'); ?>" name="submit">
+
+
+    </div>    <div class="cl"><img src="/images/loader.gif" id="loading" align="absmiddle" style="display:none;"/>
+
+    <div class="cl"></div>
+    <div class="b"> 
+    <div class="b"> 
+    <div class="b"></div> 
+    </div> 
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
